@@ -1,0 +1,48 @@
+[submodule "src/ThirdParty/urdf_test"]
+	path = src/ThirdParty/urdf_test
+	url = https://github.com/pal-robotics/urdf_test
+	branch = humble-devel
+[submodule "src/ThirdParty/launch_pal"]
+	path = src/ThirdParty/launch_pal
+	url = https://github.com/pal-robotics/launch_pal.git
+	branch = master
+[submodule "src/ThirdParty/pal_gazebo_worlds"]
+	path = src/ThirdParty/pal_gazebo_worlds
+	url = https://github.com/pal-robotics/pal_gazebo_worlds.git
+	branch = humble-devel
+[submodule "src/ThirdParty/pmb2_robot"]
+	path = src/ThirdParty/pmb2_robot
+	url = https://github.com/pal-robotics/pmb2_robot.git
+	branch = humble-devel
+[submodule "src/ThirdParty/pmb2_navigation"]
+	path = src/ThirdParty/pmb2_navigation
+	url = https://github.com/pal-robotics/pmb2_navigation.git
+	branch = humble-devel
+[submodule "src/ThirdParty/tiago_robot"]
+	path = src/ThirdParty/tiago_robot
+	url = https://github.com/pal-robotics/tiago_robot.git
+	branch = humble-devel
+[submodule "src/ThirdParty/tiago_navigation"]
+	path = src/ThirdParty/tiago_navigation
+	url = https://github.com/pal-robotics/tiago_navigation.git
+	branch = humble-devel
+[submodule "src/ThirdParty/tiago_simulation"]
+	path = src/ThirdParty/tiago_simulation
+	url = https://github.com/pal-robotics/tiago_simulation.git
+	branch = humble-devel
+[submodule "src/ThirdParty/hey5_description"]
+	path = src/ThirdParty/hey5_description
+	url = https://github.com/pal-robotics/hey5_description.git
+	branch = humble-devel
+[submodule "src/ThirdParty/pal_gripper"]
+	path = src/ThirdParty/pal_gripper
+	url = https://github.com/pal-robotics/pal_gripper.git
+	branch = humble-devel
+[submodule "src/ThirdParty/tiago_moveit_config"]
+	path = src/ThirdParty/tiago_moveit_config
+	url = https://github.com/pal-robotics/tiago_moveit_config.git
+	branch = humble-devel
+[submodule "src/ThirdParty/Groot"]
+	path = src/ThirdParty/Groot
+	url = https://github.com/BehaviorTree/Groot.git
+	branch = master
