@@ -3,15 +3,33 @@
     // for the documentation about the tasks.json format
     "version": "2.0.0",
     "tasks": [
-        // Build tasks
+        {
+            "type": "colcon",
+            "args": [
+                "build",
+                "--symlink-install",
+                "--merge-install",
+                "--base-paths",
+                "${input:selectDir}",
+                "--cmake-args",
+                "-DCMAKE_BUILD_TYPE=RelWithDebInfo"
+            ],
+            "problemMatcher": [
+                "$catkin-gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "label": "colcon: select build"
+        },
         {
             "label": "build",
             "detail": "Build workspace (default)",
             "type": "shell",
             "command": "./build.sh",
             "group": {
-                "kind": "build",
-                "isDefault": true
+                "kind": "build"
             },
             "problemMatcher": "$gcc"
         },
@@ -28,7 +46,6 @@
             "group": "build",
             "problemMatcher": "$gcc"
         },
-        // Test tasks
         {
             "label": "test",
             "detail": "Run all unit tests and show results.",
@@ -39,7 +56,6 @@
                 "isDefault": true
             }
         },
-        // Clean
         {
             "label": "clean",
             "detail": "Run the clean target",
@@ -54,7 +70,6 @@
             "command": "rm -fr build install log; py3clean .",
             "problemMatcher": []
         },
-        // Linting and static code analysis tasks
         {
             "label": "fix",
             "detail": "Reformat files with uncrustify.",
@@ -78,7 +93,6 @@
                     "source": "uncrustify",
                     "fileLocation": "relative",
                     "pattern": [
-                        // just the file name message
                         {
                             "regexp": "^(.*)'(.*)':",
                             "kind": "file",
@@ -100,7 +114,7 @@
                 "panel": "dedicated",
                 "reveal": "silent",
                 "clear": true
-            },
+            }
         },
         {
             "label": "cppcheck",
@@ -186,7 +200,6 @@
             ],
             "problemMatcher": []
         },
-        // Workspace editing tasks
         {
             "label": "new ament_cmake package",
             "detail": "Create a new ROS cpp package from a template.",
@@ -235,6 +248,11 @@
             "type": "shell",
             "command": "python3 .devcontainer/repos_to_submodules.py",
             "problemMatcher": []
+        },
+        {
+            "label": "Launch",
+            "type": "shell",
+            "command": "source install/setup.bash && ros2 launch ${input:selectLauncher}"
         }
     ],
     "inputs": [
@@ -242,6 +260,39 @@
             "id": "package",
             "type": "promptString",
             "description": "Package name"
+        },
+        {
+            "id": "selectDir",
+            "type": "command",
+            "command": "extension.commandvariable.pickStringRemember",
+            "args": {
+              "description": "Which package to build?",
+              "options": [
+                ["Use previous directory", "${remember:srcSubDir}"],
+                ["All", "src/examples"],
+                ["Pick directory", "${pickFile:srcSubDir}"]
+              ],
+              "default": null,
+              "pickFile": {
+                "srcSubDir": {
+                  "description": "Which directory?",
+                  "include": "src/examples/*/*",
+                  "showDirs": true,
+                  "keyRemember": "srcSubDir"
+                }
+              }
+            }
+          },
+          {
+            "id": "selectLauncher",
+            "type": "command",
+            "command": "extension.commandvariable.file.pickFile",
+            "args": {
+              "description": "Which package to launch?",
+              "keyRemember":"launchFile",
+              "default": null,
+              "include": "install/share/**/*.py"
+            }
         }
     ]
 }
