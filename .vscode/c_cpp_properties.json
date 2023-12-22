@@ -13,6 +13,7 @@
         "/home/negm/VS-Code-ROS2-Template/src/examples/br2_tf2_detector/include/**",
         "/home/negm/VS-Code-ROS2-Template/src/examples/br2_tracking/include/**",
         "/home/negm/VS-Code-ROS2-Template/src/examples/br2_vff_avoidance/include/**",
+        "/home/negm/VS-Code-ROS2-Template/src/examples/my_bumpgo/include/**",
         "/usr/include/**"
       ],
       "name": "ROS",
